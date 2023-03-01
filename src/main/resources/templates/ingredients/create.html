@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Nuovo ingrediente</title>
+	<link th:replace="~{fragments :: head}">
+	</link>
+</head>
+
+<body>
+	<header class="container-fluid">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Aggiungi un ingrediente</h1>
+		</div>
+	</header>
+	<main class="container">
+		<h1>Nuovo ingrediente: </h1>
+
+		<div class="row">
+			<div class="col-8">
+				<form id="ingredient-form" th:action="@{/ingredients/create}" method="post" th:object="${ingredient}">
+
+					<label class="form-label" for="name">Inserisci il nome dell'ingrediente</label>
+					<input class="form-control" id="name" th:field="*{name}" type="text">
+
+<!--										<input class="form-control" id="name" th:field="*{name}" type="text" th:errorClass="is-invalid">-->
+<!--										<div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">-->
+<!--											<ul>-->
+<!--												<li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>-->
+<!--											</ul>-->
+<!--										</div>-->
+
+					<button type="submit" class="btn btn-primary">Salva</button>
+					<a class="btn btn-primary" th:href="@{/ingredients}">Annulla</a>
+				</form>
+			</div>
+		</div>
+	</main>
+
+	<script th:replace="~{fragments :: script}"></script>
+</body>
+
+</html>

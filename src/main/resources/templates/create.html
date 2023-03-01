@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+	<title>Crea nuova pizza</title>
+	<th:block th:replace="~{fragments :: head}">
+		</th>
+</head>
+
+<body>
+	<header class="container-fluid mb3">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Crea una nuova pizza</h1>
+			<h4 th:text="${error}" class="text-danger"></h4>
+		</div>
+	</header>
+	<main class="container">
+
+		<div class="row text-center">
+				<form class="col-12" id="pizzaForm" th:object="${pizza}" th:action="@{/create}" method="post">
+<!--					<ul>-->
+<!--						<li th:each="err : ${#fields.allErrors()}" th:text="${err}">-->
+<!--						</li>-->
+<!--					</ul>-->
+					<label for="name" class="form-label">Inserisci il nome:</label>
+					<input type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+						<p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+					</div>
+
+					<label for="description" class="form-label">Inserisci una descrizione:</label>
+					<input type="text" class="form-control" id="description" th:field="*{description}"
+						th:errorClass="is-invalid">
+
+					<div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+						<p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
+					</div>
+
+					<label for="price" class="form-label">Inserisci il prezzo:</label>
+					<input type="text" class="form-control" id="price" th:field="*{price}" th:errorClass="is-invalid">
+
+					<div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+						<p th:each="err : ${#fields.errors('price')}" th:text="${err}"></p>
+					</div>
+
+
+					<input type="text" class="d-none" id="photo"
+						value="https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"
+						th:field="*{Photo}" />
+					<div class="mt-3">
+						<button type="submit" class="btn btn-primary">Salva</button>
+						<a class="btn btn-primary" th:href="@{/}">Annulla</a>
+					</div>
+				</form>
+		</div>
+	</main>
+	<div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>

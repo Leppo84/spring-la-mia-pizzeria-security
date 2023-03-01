@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Nuova Offerta</title>
+	<link th:replace="~{fragments :: head}">
+	</link>
+</head>
+
+<body>
+	<header class="container-fluid">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Scopri la pizza</h1>
+		</div>
+	</header>
+	<div class="container">
+		<h1>Nuova Offerta: <span th:text="${offer.pizza.name}"></span></h1>
+		<hr />
+
+		<div class="row">
+			<div class="col-8">
+				<form id="offer-form" th:action="@{/offers/create}" method="post" th:object="${offer}">
+					<ul>
+						<li th:each="err : ${#fields.allErrors()}" th:text="${err}" class="text-danger">
+						</li>
+					</ul>
+
+					<input type="hidden" th:field="${offer.pizza}">
+					<label class="form-label" for="offerBeginDate">Inserisci l'inizio dell'offerta</label>
+					<input class="form-control" id="offerBeginDate" th:field="*{offerBeginDate}" type="date"
+						th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('offerBeginDate')}" class="invalid-feedback">
+						<ul>
+							<li th:each="err : ${#fields.errors('offerBeginDate')}" th:text="${err}"></li>
+						</ul>
+					</div>
+
+
+					<label class="form-label" for="offerEndDate">Inserisci la fine dell'offerta</label>
+					<input class="form-control" id="offerEndDate" th:field="*{offerEndDate}" type="date"
+						th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('offerEndDate')}" class="invalid-feedback">
+						<ul>
+							<li th:each="err : ${#fields.errors('offerEndDate')}" th:text="${err}"></li>
+						</ul>
+					</div>
+
+					<label class="form-label" for="title">Inserisci il nome dell'offerta</label>
+					<input class="form-control" id="title" th:field="*{title}" type="text" th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+						<ul>
+							<li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+						</ul>
+					</div>
+
+					<button type="submit" class="btn btn-primary">Salva</button>
+					<a class="btn btn-primary" th:href="@{/offers}">Annulla</a>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script th:replace="~{fragments :: script}"></script>
+</body>
+
+</html>

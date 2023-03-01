@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Elenco Offerte</title>
+	<link th:replace="~{fragments :: head}">
+	</link>
+</head>
+
+<body>
+	<header class="container-fluid">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Scopri le nostre offerte</h1>
+		</div>
+	</header>
+	<main class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Pizza</td>
+					<td>Data inizio</td>
+					<td>Data termine</td>
+					<td>Nome offerta</td>
+					<td>Cancella</td>
+					<td>Modifica</td>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="offerta : ${elencoOfferte}">
+					<td th:text="${offerta.id}">
+<!--						<a th:text="${offerta.id}" th:href="@{'offers/'+ ${offerta.id}}"></a>-->
+					</td>
+					<td th:text="${offerta.pizza.name}"></td>
+					<td th:text="${#temporals.format(offerta.offerBeginDate,'dd/MM/yyyy')}"></td>
+					<td th:text="${#temporals.format(offerta.offerEndDate,'dd/MM/yyyy')}"></td>
+					<td th:text="${offerta.title}"></td>
+					<td>
+						<!--					<form action="#" th:action="@{'/offers/delete/{id}'(id=${offer.id})}" method="post">-->
+						<!--					  <button class="btn btn-danger" type="submit" id="submitButton">-->
+						<!--					    <i class="fas fa-trash-alt"></i>-->
+						<!--					  </button>-->
+						<!--					</form>-->
+					</td>
+					<td>
+						<a class="btn btn-primary" th:href="@{'/offers/edit/{id}'(id=${offerta.id})}"><i
+								class="fa-regular fa-pen-to-square"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+	<script th:replace="~{fragments :: script}"></script>
+</body>
+
+</html>

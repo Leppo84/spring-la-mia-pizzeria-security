@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+		integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+
+<body>
+	<header class="container-fluid mb3">
+		<div class="row m-auto text-center">
+			<a class="btn btn-primary" href="./create.html"><i class="fas fa-plus"></i>Crea la tua pizza</a>
+		</div>
+	</header>
+	<main class="container">
+		<div class="row text-center">
+			<h1 class="">Le Nostre pizze</h1>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-auto">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Descrizione</th>
+							<th scope="col">Prezzo</th>
+							<th scope="col">Immagine</th>
+							<th scope="col">Modifica</th>
+							<th scope="col">Cancella</th>
+							<th scope="col">Aggiungi offerta</th>
+						</tr>
+					</thead>
+					<tbody id="pizza_table">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+		integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="./index.js"></script>
+</body>
+
+</html>

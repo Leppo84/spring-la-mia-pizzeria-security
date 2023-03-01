@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Ingredienti</title>
+	<div th:replace="~{fragments :: head}"></div>
+</head>
+
+<body>
+	<header class="container-fluid">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Scopri gli ingredienti</h1>
+		</div>
+	</header>
+	<main class="container">
+		<p th:if="${elencoIngredienti.size()==0}">non ci sono ingredienti da mostrare</p>
+		<div class="col-12">
+			<table th:if="${elencoIngredienti.size()>0}" class="table">
+<!--			<table class="table">-->
+				<thead>
+					<tr>
+						<td>Id</td>
+						<td>nome</td>
+						<td>modifica</td>
+						<td>cancella</td>
+					</tr>
+				</thead>
+				<tbody>
+<!--					<tr th:each="ingredient : ${ingredient.id}">-->
+					<tr th:each="ingredient : ${elencoIngredienti}">
+						<td th:text="${ingredient.id}"></td>
+						<td th:text="${ingredient.name}"></td>
+						<td >TO DO</td>
+						<td >TO DO</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+	<div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>
