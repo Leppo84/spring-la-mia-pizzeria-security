@@ -29,13 +29,6 @@ public class PizzasController {
 	@Autowired
 	IngredientRepository IngredientRepository;
 	
-//	@GetMapping
-//	public String index(Model model) {
-//		List<Pizza> elencoPizze=PizzaRepository.findAll();
-//		model.addAttribute("elencoPizze",elencoPizze);
-//		return "index";
-//	}
-	
 	@GetMapping
 	public String index(@RequestParam(name = "input", required = false) String input, Model model) {
 		List<Pizza> elencoPizze;	
